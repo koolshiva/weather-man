@@ -1,0 +1,13 @@
+
+<div class="form-group">
+  <label>Latitude</label>
+  <input id="app-latitude" type="number" placeholder="-90 to +90" #lat="ngModel" [(ngModel)]="appLatitude" required/>
+  <p *ngIf="(!lat.valid && lat.touched) || ((lat.valid && lat.touched) && (lat.value < -90 || lat.value > 90))">only a value between -90 and +90 is valid</p>
+</div>
+<div class="form-group">
+  <label>Longitude</label>
+  <input id="app-longitude" type="number" placeholder="-180 to +180" #lon="ngModel" [(ngModel)]="appLongitude" required/>
+  <p *ngIf="(!lon.valid && lon.touched) || ((lon.valid && lon.touched) && (lon.value < -180 || lon.value > 180))">only a value between -180 and +180 is valid</p>
+</div>
+
+<button class="btn btn-primary" (click)="setCoordinates((!lat.valid) || ((lat.valid && lat.touched) && (lat.value < -90 || lat.value > 90)),(!lon.valid) || ((lon.valid && lon.touched) && (lon.value < -180 || lon.value > 180)))">Show Weather Data</button>
